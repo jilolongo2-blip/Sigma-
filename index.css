@@ -1,0 +1,102 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  
+  /* ===== NAVBAR ===== */
+  .navbar {
+    background: rgba(4, 28, 80, 0.95);
+  }
+  
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(rgba(13,18,35,.85), rgba(13,18,35,.85)),
+    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d") center/cover;
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  .hero h1 {
+    font-weight: 700;
+  }
+  .hero p {
+    max-width: 650px;
+    margin: auto;
+  }
+  
+  /* ===== SECTIONS ===== */
+  .section-title {
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  .section-subtitle {
+    color: #6c757d;
+    margin-bottom: 50px;
+  }
+  
+  /* ===== CARDS ===== */
+  .card {
+    border: none;
+    transition: all .4s ease;
+  }
+  .card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 45px rgba(0,0,0,.15);
+  }
+  .icon-box {
+    width: 70px;
+    height: 70px;
+    background: #0d6efd;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: auto;
+    font-size: 30px;
+  }
+  
+  /* ===== STATS ===== */
+  .stats {
+    background: #0d6efd;
+    color: #fff;
+  }
+  
+  /* ===== TESTIMONIAL ===== */
+  .testimonial {
+    background: #f8f9fa;
+    border-left: 5px solid #0d6efd;
+    padding: 25px;
+  }
+  
+  /* ===== FOOTER ===== */
+  footer {
+    background: #0b1d3a;
+    color: #bbb;
+  }
+  footer a {
+    color: #bbb;
+    text-decoration: none;
+  }
+  footer a:hover {
+    color: #fff;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    transition: 0.4s;
+  }
+  
+  /* Hover sur boutons */
+  .btn:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+  
+  /* Section stats */
+  .stats h2 {
+    font-size: 2.5rem;
+    color: #0d6efd;
+  }
