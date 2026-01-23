@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="fr" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
@@ -18,111 +19,116 @@
             --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        body { font-family: 'Inter', sans-serif; color: #333; }
+        body { font-family: 'Inter', sans-serif; color: #333; overflow-x: hidden; }
 
         /* --- NAVIGATION --- */
-        .navbar { background: var(--blue-roi); padding: 10px 0; border-bottom: 3px solid var(--accent-orange); }
-        .navbar-brand img { height: 45px; width: auto; margin-right: 10px; } /* Style du logo */
+        .navbar { background: var(--blue-roi); padding: 12px 0; border-bottom: 4px solid var(--accent-orange); }
         .navbar-brand { font-weight: 800; font-size: 1.5rem; color: white !important; display: flex; align-items: center; }
-        .nav-link { color: white !important; font-weight: 600; font-size: 0.9rem; margin: 0 10px; transition: var(--transition); }
+        .navbar-brand span { color: var(--accent-orange); margin-left: 5px; }
+        .nav-link { color: white !important; font-weight: 600; font-size: 0.9rem; margin: 0 10px; transition: var(--transition); text-transform: uppercase; }
         .nav-link:hover { color: var(--accent-orange) !important; transform: translateY(-2px); }
 
         /* --- HERO --- */
         .hero {
-            background: linear-gradient(135deg, rgba(65, 105, 225, 0.9), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070') center/cover;
-            padding: 120px 0; color: white;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.93), rgba(0, 0, 0, 0.75)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070') center/cover no-repeat;
+            padding: 140px 0; color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
-        .hero h1 { font-weight: 800; font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        .hero h1 { font-weight: 800; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; }
 
         /* --- BOUTONS --- */
         .btn-roi {
-            background: var(--blue-roi); color: white; border: none; padding: 14px 30px;
-            font-weight: 700; border-radius: 10px; transition: var(--transition); display: inline-block; text-decoration: none;
+            background: var(--blue-roi); color: white; border: none; padding: 16px 35px;
+            font-weight: 700; border-radius: 12px; transition: var(--transition); display: inline-block; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
         }
-        .btn-roi:hover { background: var(--blue-roi-dark); color: white; transform: scale(1.05); }
+        .btn-roi:hover { background: var(--blue-roi-dark); color: white; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(65, 105, 225, 0.4); }
 
         /* --- SECTIONS --- */
         .section-title { font-weight: 800; color: var(--blue-roi); margin-bottom: 40px; position: relative; }
         .section-title::after { content: ''; display: block; width: 60px; height: 5px; background: var(--accent-orange); margin-top: 10px; }
         .text-center .section-title::after { margin-left: auto; margin-right: auto; }
 
-        /* --- CARTES FORMATIONS --- */
-        .course-card {
+        /* --- CARTES --- */
+        .custom-card {
             background: white; border-radius: 20px; padding: 30px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition);
-            border-top: 5px solid var(--blue-roi); height: 100%;
+            height: 100%; border: 1px solid rgba(0,0,0,0.05);
         }
-        .course-card:hover { transform: translateY(-10px); }
-        .course-icon { font-size: 2.5rem; color: var(--blue-roi); margin-bottom: 20px; }
-
-        /* --- CARTES EQUIPE --- */
-        .team-card {
-            background: white; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition);
-            border-bottom: 5px solid var(--blue-roi);
-        }
-        .team-card:hover { transform: translateY(-10px); }
-        .team-img { width: 100%; height: 300px; object-fit: cover; }
-
-        /* --- CONTACT --- */
-        .contact-box { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-        .form-control { border-radius: 8px; padding: 12px; border: 1px solid #ddd; }
+        .course-card { border-top: 6px solid var(--blue-roi); }
+        .course-card:hover, .team-card:hover { transform: translateY(-10px); }
         
-        @media (max-width: 768px) {
-            .hero { text-align: center; padding: 80px 0; }
-        }
+        .course-icon { font-size: 2.8rem; color: var(--blue-roi); margin-bottom: 20px; }
+
+        /* --- SECTION APPRENTIS --- */
+        .testimonial-card { border-left: 5px solid var(--accent-orange); background: #fff; }
+        .gallery-img { width: 100%; height: 150px; object-fit: cover; border-radius: 12px; transition: 0.3s; }
+        .gallery-img:hover { filter: brightness(70%); }
+
+        /* --- EQUIPE --- */
+        .team-card { border-radius: 20px; overflow: hidden; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .team-img { width: 100%; height: 320px; object-fit: cover; }
+
+        /* --- FOOTER --- */
+        footer { background: #0a0a0a; color: white; padding: 60px 0 20px; }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand bg-white rounded-pill" href="#">
-                <img src="IMG_0213.png" alt="Sigma Logo">
-                <span></span>
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-sigma me-2"></i> SIGMA<span>ANALYTICS</span>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    
-                    <li class="nav-item"><a class="nav-link" href="#about">Accueil</a></li>
-                    
                     <li class="nav-item"><a class="nav-link" href="#about">À Propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#courses">Formations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#apprentis">Apprentis</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Équipe</a></li>
-                    <li class="nav-item ms-lg-3"><a class="btn btn-light text-primary fw-bold px-4" href="#contact">S'inscrire</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-light text-primary fw-bold px-4 py-2" href="#contact">S'inscrire</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
+    <header class="hero">
         <div class="container">
             <div class="col-lg-9">
-                <span class="badge bg-warning text-dark mb-3 fw-bold">KINSHASA • RDC</span>
-                <h1>Dominez la Data avec le <span style="color:var(--accent-orange)">Bleu Roi</span> de l'Excellence.</h1>
-                <p class="lead mb-5 opacity-90">Formations pratiques en Business Intelligence, Comptabilité et Développement Web.</p>
-                <a href="#courses" class="btn-roi btn-lg">Nos Masterclasses</a>
+                <span class="badge bg-warning text-dark mb-3 fw-bold px-3 py-2">📍 KINSHASA • GOMBE</span>
+                <h1>Dominez la Data avec l'Excellence du <span style="color:var(--accent-orange)">Bleu Roi</span>.</h1>
+                <p class="lead mb-5 opacity-90 fs-4">Accélérez votre carrière avec nos Masterclasses certifiantes en BI, Comptabilité OHADA et Développement Web.</p>
+                <div class="d-flex gap-3">
+                    <a href="#courses" class="btn-roi btn-lg">Voir les Formations</a>
+                    <a href="#apprentis" class="btn btn-outline-light btn-lg px-4 fw-bold">Succès Étudiants</a>
+                </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <section id="about" class="py-5">
         <div class="container py-lg-5">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
-                    <h2 class="section-title">Notre Vision</h2>
-                    <p class="fs-5 text-muted">Sigma-Analytics est le leader de la formation technologique à Kinshasa. Nous transformons les talents bruts en experts certifiés capables de répondre aux défis des entreprises modernes.</p>
-                    <div class="d-flex gap-4 mt-4">
-                        <div><h3 class="fw-bold text-primary mb-0">100%</h3><small class="text-uppercase fw-bold">Pratique</small></div>
-                        <div class="border-start ps-4"><h3 class="fw-bold text-primary mb-0">98%</h3><small class="text-uppercase fw-bold">Satisfaction</small></div>
+                    <h2 class="section-title">Pourquoi nous choisir ?</h2>
+                    <p class="fs-5 text-muted">Sigma-Analytics n'est pas qu'un centre de formation, c'est un incubateur de talents. Notre méthode repose sur des projets réels rencontrés en entreprise en RDC.</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <h3 class="fw-bold text-primary mb-0">500+</h3>
+                            <small class="text-uppercase fw-bold text-muted">Professionnels Formés</small>
+                        </div>
+                        <div class="col-6 border-start ps-4">
+                            <h3 class="fw-bold text-primary mb-0">100%</h3>
+                            <small class="text-uppercase fw-bold text-muted">Pratique & Projets</small>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070" class="img-fluid rounded-4 shadow-lg" alt="Formation">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070" class="img-fluid rounded-4 shadow-lg" alt="Formation Sigma">
                 </div>
             </div>
         </div>
@@ -131,57 +137,174 @@
     <section id="courses" class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Nos Formations</h2>
+                <h2 class="section-title d-inline-block">Nos Masterclasses</h2>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4"><div class="course-card"><i class="fas fa-chart-line course-icon"></i><h4 class="fw-bold">Data Analytics</h4><p class="text-muted">Maîtrisez Power BI, Excel avancé et SQL.</p></div></div>
-                <div class="col-lg-4"><div class="course-card"><i class="fas fa-calculator course-icon"></i><h4 class="fw-bold">Comptabilité OHADA</h4><p class="text-muted">Pratique réelle et fiscalité conforme RDC.</p></div></div>
-                <div class="col-lg-4"><div class="course-card"><i class="fas fa-code course-icon"></i><h4 class="fw-bold">Développement Web</h4><p class="text-muted">Apprenez à concevoir des applications web robustes.</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Nos Experts Mentors</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4"><div class="team-card"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974" class="team-img"><div class="p-4 text-center"><h5 class="fw-bold">Marc Mukendi</h5><p class="small text-primary fw-bold">Lead Data Analyst</p></div></div></div>
-                <div class="col-lg-4"><div class="team-card"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976" class="team-img"><div class="p-4 text-center"><h5 class="fw-bold">Sarah Katumbwe</h5><p class="small text-primary fw-bold">Manager Finance</p></div></div></div>
-                <div class="col-lg-4"><div class="team-card"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974" class="team-img"><div class="p-4 text-center"><h5 class="fw-bold">Jean-Paul Bakari</h5><p class="small text-primary fw-bold">Senior Developer</p></div></div></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-5">
-                    <h2 class="section-title">Contactez-nous</h2>
-                    <p class="text-muted">Boulevard du 30 Juin, Kinshasa - Gombe<br>WhatsApp: +243 810 000 000</p>
+                <div class="col-lg-4">
+                    <div class="custom-card course-card">
+                        <i class="fas fa-chart-pie course-icon"></i>
+                        <h4 class="fw-bold">Business Intelligence</h4>
+                        <p class="text-muted">Maîtrisez l'art de la donnée : Power BI, SQL et Dashboards stratégiques pour décideurs.</p>
+                    </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="contact-box">
-                        <form><div class="row g-3">
-                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Nom"></div>
-                            <div class="col-md-6"><input type="email" class="form-control" placeholder="Email"></div>
-                            <div class="col-12"><textarea class="form-control" rows="4" placeholder="Message"></textarea></div>
-                            <div class="col-12"><button class="btn-roi w-100">Envoyer</button></div>
-                        </div></form>
+                <div class="col-lg-4">
+                    <div class="custom-card course-card">
+                        <i class="fas fa-file-invoice-dollar course-icon"></i>
+                        <h4 class="fw-bold">Comptabilité OHADA</h4>
+                        <p class="text-muted">De la théorie à la pratique : Fiscalité RDC, gestion comptable et logiciels spécialisés.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="custom-card course-card">
+                        <i class="fas fa-laptop-code course-icon"></i>
+                        <h4 class="fw-bold">Web Development</h4>
+                        <p class="text-muted">Devenez développeur : Création d'applications web modernes et performantes.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-5">
-        <div class="container text-center">
+    <section id="apprentis" class="py-5" style="background: #eef2ff;">
+        <div class="container py-lg-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Réussite de nos Apprentis</h2>
+                <p class="text-muted">Découvrez l'impact de Sigma-Analytics sur les carrières de nos diplômés.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="custom-card testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://i.pravatar.cc/60?u=8" class="rounded-circle me-3" alt="Apprenti">
+                            <div>
+                                <h6 class="fw-bold mb-0">Arnaud Kabeya</h6>
+                                <small class="text-primary fw-bold">Analyste chez Rawbank</small>
+                            </div>
+                        </div>
+                        <p class="text-muted small italic">"La formation en Power BI a littéralement changé ma façon de travailler. Je suis passé de simples tableaux à des rapports automatisés."</p>
+                        <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="custom-card testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://i.pravatar.cc/60?u=12" class="rounded-circle me-3" alt="Apprenti">
+                            <div>
+                                <h6 class="fw-bold mb-0">Dorcas Mwamba</h6>
+                                <small class="text-primary fw-bold">Comptable Senior</small>
+                            </div>
+                        </div>
+                        <p class="text-muted small italic">"Sigma m'a permis de maîtriser les subtilités du système OHADA. Les exercices pratiques sont calqués sur la réalité du terrain."</p>
+                        <div class="text-warning small"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="custom-card bg-primary text-white d-flex flex-column justify-content-center">
+                        <h3 class="fw-bold">+150 Apprentis</h3>
+                        <p class="small mb-4">Ont rejoint de grandes entreprises après leur passage chez nous cette année.</p>
+                        <a href="#contact" class="btn btn-outline-light btn-sm fw-bold">Rejoindre la promotion →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 g-2">
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=400" class="gallery-img" alt="Promo"></div>
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=400" class="gallery-img" alt="Promo"></div>
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=400" class="gallery-img" alt="Promo"></div>
+                <div class="col-3"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400" class="gallery-img" alt="Promo"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-5">
+        <div class="container py-lg-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Vos Mentors Experts</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600" class="team-img" alt="Mentor">
+                        <div class="p-4 text-center">
+                            <h5 class="fw-bold mb-1">Marc Mukendi</h5>
+                            <p class="text-primary fw-bold small">Lead Data Analyst</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600" class="team-img" alt="Mentor">
+                        <div class="p-4 text-center">
+                            <h5 class="fw-bold mb-1">Sarah Katumbwe</h5>
+                            <p class="text-primary fw-bold small">Manager Finance & OHADA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600" class="team-img" alt="Mentor">
+                        <div class="p-4 text-center">
+                            <h5 class="fw-bold mb-1">Jean-Paul Bakari</h5>
+                            <p class="text-primary fw-bold small">Senior Web Architect</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 bg-light">
+        <div class="container py-lg-5">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h2 class="section-title">Prêt à transformer votre avenir ?</h2>
+                    <p class="text-muted fs-5 mb-4">Réservez votre place pour la prochaine session. Nos groupes sont limités pour garantir un suivi personnalisé.</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white p-3 rounded-circle me-3"><i class="fab fa-whatsapp"></i></div>
+                        <div><h6 class="mb-0 fw-bold">WhatsApp</h6><span>+243 810 000 000</span></div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary text-white p-3 rounded-circle me-3"><i class="fas fa-map-marker-alt"></i></div>
+                        <div><h6 class="mb-0 fw-bold">Localisation</h6><span>Gombe, Kinshasa, RDC</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6"><input type="text" class="form-control" placeholder="Nom"></div>
+                                <div class="col-md-6"><input type="email" class="form-control" placeholder="Email"></div>
+                                <div class="col-12">
+                                    <select class="form-select">
+                                        <option selected disabled>Choisir une formation</option>
+                                        <option>Business Intelligence</option>
+                                        <option>Comptabilité OHADA</option>
+                                        <option>Développement Web</option>
+                                    </select>
+                                </div>
+                                <div class="col-12"><textarea class="form-control" rows="4" placeholder="Votre message..."></textarea></div>
+                                <div class="col-12"><button class="btn-roi w-100">Envoyer ma demande</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
             <h4 class="fw-bold mb-4">SIGMA<span class="text-primary">ANALYTICS</span></h4>
-            <p class="small opacity-50">&copy; 2026 Kinshasa, RDC.</p>
+            <div class="d-flex justify-content-center gap-4 mb-4 fs-4">
+                <a href="#" class="text-white"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="small opacity-50">&copy; 2026 Sigma-Analytics Kinshasa. Tous droits réservés.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-                                          </html>
+</html>                                        
