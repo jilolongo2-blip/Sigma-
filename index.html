@@ -1,367 +1,179 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sigma Analytics Trainings | Excellence Data & Tech Kinshasa</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Elite Consulting | Plateforme Interactive 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --sigma-blue: #001A33;
-            --sigma-gold: #CCAC00;
-            --sigma-gold-light: #FFD700;
-            --sigma-white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.03);
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--sigma-blue);
-            overflow-x: hidden;
-            background-color: #fbfbfb;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            background: rgba(0, 26, 51, 0.98) !important;
-            backdrop-filter: blur(15px);
-            border-bottom: 2px solid var(--sigma-gold);
-            padding: 18px 0;
-            transition: all 0.3s;
-        }
-
-        .nav-link {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            margin: 0 12px;
-            transition: 0.3s;
-        }
-        .nav-link:hover { color: var(--sigma-gold) !important; }
-
-        /* --- HERO PREMIUM --- */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 26, 51, 0.95) 0%, rgba(0, 45, 98, 0.8) 100%), 
-                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070');
-            background-size: cover;
-            background-attachment: fixed;
-            padding: 180px 0 140px;
-            color: white;
-            clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
-        }
-
-        .hero-title { font-weight: 800; font-size: 3.8rem; line-height: 1.1; letter-spacing: -2px; }
-        .text-gold { color: var(--sigma-gold); }
-
-        /* --- BOUTONS --- */
-        .btn-gold {
-            background: linear-gradient(135deg, var(--sigma-gold-light), var(--sigma-gold));
-            color: var(--sigma-blue) !important;
-            border: none;
-            padding: 16px 35px;
-            font-weight: 800;
-            border-radius: 12px;
-            text-transform: uppercase;
-            box-shadow: 0 8px 20px rgba(204, 172, 0, 0.3);
-            transition: 0.4s;
-        }
-        .btn-gold:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(204, 172, 0, 0.5); }
-
-        /* --- CARDS & SECTIONS --- */
-        .section-padding { padding: 100px 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+        .bg-navy { background-color: #0f172a; }
+        .text-royal { color: #2563eb; }
+        .bg-royal { background-color: #2563eb; }
         
-        .card-premium {
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 25px;
-            background: white;
-            padding: 40px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            height: 100%;
-        }
-        .card-premium:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px rgba(0, 26, 51, 0.1);
-            border-color: var(--sigma-gold);
+        /* Logique des onglets */
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; animation: slideUp 0.4s ease-out; }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .icon-box {
-            width: 70px; height: 70px;
-            background: rgba(204, 172, 0, 0.1);
-            border-radius: 18px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--sigma-gold); font-size: 1.8rem;
-            margin-bottom: 25px;
+        .tab-nav.active {
+            color: #2563eb;
+            border-bottom: 3px solid #2563eb;
+            background: rgba(37, 99, 235, 0.05);
         }
-
-        /* --- ABOUT & FORMATEURS --- */
-        .img-modern {
-            border-radius: 30px;
-            box-shadow: 20px 20px 0px var(--sigma-gold);
-        }
-
-        .trainer-card {
-            text-align: center;
-            background: var(--sigma-blue);
-            color: white;
-            padding: 40px 25px;
-            border-radius: 25px;
-            margin-top: 30px;
-        }
-        .trainer-img {
-            width: 130px; height: 130px;
-            border-radius: 50%;
-            border: 5px solid var(--sigma-gold);
-            margin-top: -90px;
-            background: white;
-            object-fit: cover;
-        }
-
-        /* --- PROCESSUS --- */
-        .process-pill {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            position: relative;
-            border: 1px solid #eee;
-        }
-        .process-num {
-            position: absolute;
-            top: -20px; left: 20px;
-            background: var(--sigma-gold);
-            width: 40px; height: 40px;
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; color: var(--sigma-blue);
-        }
-
-        /* --- FOOTER --- */
-        footer { background: var(--sigma-blue); color: white; padding: 80px 0 40px; }
-
-        /* --- WHATSAPP --- */
-        .wa-float {
-            position: fixed; bottom: 40px; right: 40px;
-            background: #25D366; color: white;
-            width: 65px; height: 65px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 32px; z-index: 9999;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            transition: 0.3s;
-        }
-        .wa-float:hover { transform: scale(1.1) rotate(15deg); color: white; }
     </style>
 </head>
-<body>
+<body class="text-slate-900">
 
-    <a href="https://wa.me/243897338150" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="https://files.oaiusercontent.com/file-K1fK6E9vG9X7Nf7R" alt="Logo" style="height: 50px;" class="me-2">
-                <span class="fw-800 fs-4">SIGMA<span class="text-gold">ANALYTICS</span></span>
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fas fa-bars-staggered"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">À Propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#formations">Formations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#formateurs">Formateurs</a></li>
-                    <li class="nav-item ms-lg-4"><a class="btn-gold text-decoration-none px-4 py-2" style="font-size: 0.8rem;" href="#inscription">S'inscrire</a></li>
-                </ul>
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-royal rounded shadow-lg flex items-center justify-center text-white italic">E</div>
+                <span class="text-xl font-black italic uppercase text-navy">ELITE<span class="text-royal">CONSULT</span></span>
             </div>
+            <a href="#contact" class="hidden lg:block bg-navy text-white px-6 py-2 rounded font-bold text-[11px] uppercase tracking-widest hover:bg-royal transition">Contact Direct</a>
         </div>
     </nav>
 
-    <header id="accueil" class="hero">
-        <div class="container text-center text-lg-start">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <span class="badge mb-4 py-2 px-3 border border-warning text-gold" style="background: rgba(204,172,0,0.1)">ACADÉMIE DE RÉFÉRENCE - RDC</span>
-                    <h1 class="hero-title mb-4">Maîtrisez la <span class="text-gold">Data</span>, le <span class="text-gold">Web</span> et la <span class="text-gold">Finance</span>.</h1>
-                    <p class="lead mb-5 opacity-75 fs-4">Formations pratiques, orientées entreprise, avec un encadrement rigoureux à Kinshasa.</p>
-                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                        <a href="#inscription" class="btn-gold px-5">S’inscrire maintenant</a>
-                        <a href="#formations" class="btn btn-outline-light btn-lg rounded-3 px-4 fw-bold">Nos Programmes</a>
-                    </div>
-                </div>
+    <section class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="flex flex-wrap justify-center mb-12 border-b border-slate-200">
+                <button onclick="switchTab(event, 'tab-accueil')" class="tab-nav active px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] transition-all">Accueil</button>
+                <button onclick="switchTab(event, 'tab-apropos')" class="tab-nav px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] transition-all text-slate-400">À Propos</button>
+                <button onclick="switchTab(event, 'tab-equipe')" class="tab-nav px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] transition-all text-slate-400">Équipe (6 pôles)</button>
+                <button onclick="switchTab(event, 'tab-projets')" class="tab-nav px-8 py-4 font-black uppercase text-[11px] tracking-[0.2em] transition-all text-slate-400">Projets Réalisés</button>
             </div>
-        </div>
-    </header>
 
-    <section id="about" class="section-padding bg-white">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <h6 class="text-gold fw-800 text-uppercase mb-3 ls-2">Qui sommes-nous ?</h6>
-                    <h2 class="display-5 fw-800 mb-4">Propulser l'Excellence Technique à Kinshasa.</h2>
-                    <p class="fs-5 text-muted mb-4">Sigma Analytics Trainings est un centre de formation de référence. Notre mission est de réduire le fossé entre la formation académique et les exigences réelles du marché du travail.</p>
-                    <div class="row g-4">
-                        <div class="col-6"><div class="d-flex align-items-center"><i class="fas fa-check-circle text-gold me-2"></i> <span>Méthode Pratique</span></div></div>
-                        <div class="col-6"><div class="d-flex align-items-center"><i class="fas fa-check-circle text-gold me-2"></i> <span>Cas Réels</span></div></div>
-                        <div class="col-6"><div class="d-flex align-items-center"><i class="fas fa-check-circle text-gold me-2"></i> <span>Experts Actifs</span></div></div>
-                        <div class="col-6"><div class="d-flex align-items-center"><i class="fas fa-check-circle text-gold me-2"></i> <span>Suivi Rigoureux</span></div></div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070" class="img-fluid img-modern" alt="Sigma Office">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="formations" class="section-padding" style="background: #f8f9fa;">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-6 fw-800">Nos Masterclasses <span class="text-gold">Premium</span></h2>
-                <p class="text-muted">Programmes intensifs conçus pour une employabilité immédiate.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-premium">
-                        <div class="icon-box"><i class="fas fa-file-excel"></i></div>
-                        <h4 class="fw-bold mb-3">Excel d’Entreprise</h4>
-                        <p class="small text-muted mb-4">Maîtrisez Excel comme en environnement professionnel.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-800 fs-5">30$</span>
-                            <span class="badge bg-light text-dark">10 Séances</span>
-                        </div>
-                        <a href="#inscription" class="btn btn-dark w-100 mt-4 rounded-3 fw-bold">S'INSCRIRE</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-premium">
-                        <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
-                        <h4 class="fw-bold mb-3">Analyse SPSS & R</h4>
-                        <p class="small text-muted mb-4">Analysez, interprétez et présentez des données réelles.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-800 fs-5">70$</span>
-                            <span class="badge bg-light text-dark">10 Séances</span>
-                        </div>
-                        <a href="#inscription" class="btn btn-dark w-100 mt-4 rounded-3 fw-bold">S'INSCRIRE</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-premium">
-                        <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
-                        <h4 class="fw-bold mb-3">Dév. Web Pro</h4>
-                        <p class="small text-muted mb-4">Apprenez à créer des sites web modernes et fonctionnels.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-800 fs-5">65$</span>
-                            <span class="badge bg-light text-dark">1 Mois</span>
-                        </div>
-                        <a href="#inscription" class="btn btn-dark w-100 mt-4 rounded-3 fw-bold">S'INSCRIRE</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card-premium">
-                        <div class="icon-box"><i class="fas fa-calculator"></i></div>
-                        <h4 class="fw-bold mb-3">Compta OHADA</h4>
-                        <p class="small text-muted mb-4">Maîtrisez la gestion selon le SYSCOHADA révisé.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="fw-800 fs-5">100$</span>
-                            <span class="badge bg-light text-dark">1 Mois</span>
-                        </div>
-                        <a href="#inscription" class="btn btn-dark w-100 mt-4 rounded-3 fw-bold">S'INSCRIRE</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="formateurs" class="section-padding bg-white">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-6 fw-800">Nos Experts <span class="text-gold">Formateurs</span></h2>
-                <p class="text-muted">Des professionnels actifs pour une formation connectée au marché.</p>
-            </div>
-            <div class="row g-5 justify-content-center pt-5">
-                <div class="col-md-5 col-lg-4">
-                    <div class="col-md-5 col-lg-4">
-                    <div class="trainer-card">
-                        <img src="IMG-20251230-WA0067.jpg" class="trainer-img" alt="Expert Finance">
-                        <h5 class="fw-bold mt-3">Expert Comptable</h5>
-                        <p class="text-gold small fw-bold">SYSCOHADA Expert</p>
-                        <p class="small opacity-75">Accompagnement fiscal et financier pour les PME en RDC.</p>
-                    </div>
-                </div>
-                    <div class="trainer-card m-4">
-                        <img src="1000102525.jpg" class="trainer-img" alt="Expert Data">
-                        <h5 class="fw-bold mt-3">Consultant Data Senior</h5>
-                        <p class="text-gold small fw-bold">SPSS & R Specialist</p>
-                        <p class="small opacity-75">Spécialiste en analyse statistique avec plus de 5 ans d'expérience.</p>
-                    </div>
-                </div>
+            <div id="tab-container">
                 
+                <div id="tab-accueil" class="tab-panel active">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center py-10">
+                        <div class="space-y-6">
+                            <h1 class="text-6xl font-black text-navy leading-tight">L'excellence en <br><span class="text-royal italic">Ingénierie.</span></h1>
+                            <p class="text-slate-500 text-lg">Plateforme stratégique pour le pilotage de vos infrastructures majeures en 2026.</p>
+                            <div class="flex gap-4">
+                                <div class="p-4 bg-white shadow-xl rounded-2xl border-l-4 border-royal">
+                                    <p class="text-2xl font-black text-navy">98%</p>
+                                    <p class="text-[10px] uppercase font-bold text-slate-400">Satisfaction Client</p>
+                                </div>
+                                <div class="p-4 bg-white shadow-xl rounded-2xl border-l-4 border-royal">
+                                    <p class="text-2xl font-black text-navy">150+</p>
+                                    <p class="text-[10px] uppercase font-bold text-slate-400">Audits Annuels</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" class="rounded-[40px] shadow-2xl">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-apropos" class="tab-panel">
+                    <div class="max-w-4xl mx-auto bg-white p-12 rounded-[40px] shadow-sm border border-slate-100">
+                        <h2 class="text-3xl font-black text-navy mb-6 italic">Notre Vision Stratégique</h2>
+                        <p class="text-slate-600 leading-relaxed mb-6 italic">"Anticiper les défis de demain par la rigueur mathématique et l'innovation technologique."</p>
+                        <p class="text-slate-500 mb-8 text-lg leading-relaxed">Elite Consult s'impose comme le partenaire privilégié des décideurs pour la mise en conformité et l'optimisation structurelle des bâtiments intelligents.</p>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="space-y-2"><h4 class="font-bold text-royal italic">01. Rigueur</h4><p class="text-sm text-slate-400">Zéro marge d'erreur acceptée.</p></div>
+                            <div class="space-y-2"><h4 class="font-bold text-royal italic">02. Futurisme</h4><p class="text-sm text-slate-400">Prêt pour les normes 2030.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-equipe" class="tab-panel">
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="p-8 bg-navy text-white rounded-[32px] hover:bg-royal transition-all duration-300">
+                            <i class="fas fa-microchip text-2xl mb-4"></i>
+                            <h4 class="font-bold mb-2 italic">Expertise BIM</h4>
+                            <p class="text-xs text-slate-400 italic">Modélisation numérique 4D.</p>
+                        </div>
+                        <div class="p-8 bg-navy text-white rounded-[32px] hover:bg-royal transition-all duration-300">
+                            <i class="fas fa-shield-alt text-2xl mb-4"></i>
+                            <h4 class="font-bold mb-2 italic">Audit Risques</h4>
+                            <p class="text-xs text-slate-400 italic">Sécurité des structures.</p>
+                        </div>
+                        <div class="p-8 bg-navy text-white rounded-[32px] hover:bg-royal transition-all duration-300">
+                            <i class="fas fa-leaf text-2xl mb-4"></i>
+                            <h4 class="font-bold mb-2 italic">Durable</h4>
+                            <p class="text-xs text-slate-400 italic">Efficacité énergétique.</p>
+                        </div>
+                        <div class="p-8 bg-navy text-white rounded-[32px] hover:bg-royal transition-all duration-300">
+                            <i class="fas fa-hard-hat text-2xl mb-4"></i>
+                            <h4 class="font-bold mb-2 italic">Génie Civil</h4>
+                            <p class="text-xs text-slate-400 italic">Grands ouvrages d'art.</p>
+                        </div>
+                        <div class="p-8 bg-navy text-white rounded-[32px] hover:bg-royal transition-all duration-300">
+                            <i class="fas fa-balance-scale text-2xl mb-4"></i>
+                            <h4 class="font-bold mb-2 italic">Juridique</h4>
+                            <p class="text-xs text-slate-400 italic">Conformité légale.</p>
+                        </div>
+                        <div class="p-8 bg-navy text-white rounded-[32px] hover:bg-royal transition-all duration-300">
+                            <i class="fas fa-robot text-2xl mb-4"></i>
+                            <h4 class="font-bold mb-2 italic">R&D</h4>
+                            <p class="text-xs text-slate-400 italic">Matériaux innovants.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-projets" class="tab-panel">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="group relative overflow-hidden rounded-[40px] aspect-video">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-navy/80 p-10 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <h3 class="text-2xl font-bold text-white italic">Business District X</h3>
+                                <p class="text-royal font-bold text-[10px] uppercase mt-2">Audit Structurel 2025</p>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-[40px] aspect-video">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-navy/80 p-10 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <h3 class="text-2xl font-bold text-white italic">Smart Hub Paris</h3>
+                                <p class="text-royal font-bold text-[10px] uppercase mt-2">Transition Énergétique</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="section-padding bg-dark text-white text-center">
-        <div class="container">
-            <h2 class="fw-bold mb-5">Comment nous rejoindre ?</h2>
-            <div class="row g-4">
-                <div class="col-6 col-md-3">
-                    <div class="process-pill text-dark">
-                        <div class="process-num">1</div>
-                        <h6 class="fw-bold m-0">Choisir</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="process-pill text-dark">
-                        <div class="process-num">2</div>
-                        <h6 class="fw-bold m-0">Formulaire</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="process-pill text-dark">
-                        <div class="process-num">3</div>
-                        <h6 class="fw-bold m-0">Payer 5$</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="process-pill text-dark">
-                        <div class="process-num">4</div>
-                        <h6 class="fw-bold m-0">Démarrer</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="inscription" class="section-padding">
-        <div class="container">
-            <div class="p-5 text-center rounded-5 shadow-lg text-white" style="background: var(--sigma-blue);">
-                <h2 class="display-5 fw-800 mb-4">Investissez dans vos compétences.</h2>
-                <p class="fs-5 mb-5 opacity-75">L'inscription se fait en deux étapes : Formulaire en ligne + Paiement Mobile Money.</p>
-                <div class="d-flex flex-wrap justify-content-center gap-4">
-                    <a href="#" class="btn-gold px-5 py-3 fs-5">Lien Google Form</a>
-                    <a href="https://wa.me/243897338150" class="btn btn-outline-success px-5 py-3 fs-5 border-2"><i class="fab fa-whatsapp me-2"></i>Contact Direct</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container text-center">
-            <h3 class="fw-800 mb-4">SIGMA<span class="text-gold">ANALYTICS</span></h3>
-            <p class="opacity-50">Limete 7ᵉ Rue, Kinshasa, RDC | +243 897 338 150</p>
-            <div class="d-flex justify-content-center gap-4 fs-3 mb-5 mt-4">
-                <a href="#" class="text-white"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p class="small opacity-25">© 2026 Sigma Analytics Trainings. Propulsé par l'Excellence.</p>
-        </div>
+    <footer class="py-12 bg-white border-t border-slate-100 text-center">
+        <span class="text-sm font-black italic uppercase text-navy">ELITE<span class="text-royal">CONSULT</span></span>
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-4">Expertise Certifiée — 2026</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        function switchTab(evt, tabId) {
+            // Cacher tous les panels
+            const panels = document.getElementsByClassName("tab-panel");
+            for (let i = 0; i < panels.length; i++) {
+                panels[i].classList.remove("active");
+            }
+
+            // Désactiver tous les navs
+            const navs = document.getElementsByClassName("tab-nav");
+            for (let i = 0; i < navs.length; i++) {
+                navs[i].classList.remove("active");
+                navs[i].classList.add("text-slate-400");
+            }
+
+            // Activer le panel et le bouton cliqué
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            evt.currentTarget.classList.remove("text-slate-400");
+        }
+    </script>
 </body>
-</html>
+    </html>
